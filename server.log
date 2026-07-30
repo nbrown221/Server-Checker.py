@@ -1,0 +1,7 @@
+INFO: Server started
+INFO: User logged in
+INFO: User logged out
+ERROR: Backup failed
+WARNING: Disk space low
+WARNING: CPU usage high
+ERROR: Server unreachable
