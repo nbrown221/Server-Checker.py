@@ -1,1 +1,49 @@
 
+errors = []
+infos = []
+warnings = []
+
+warning = 0
+error = 0
+info = 0
+
+log_file = open("server.log", 'r')
+for alerts in log_file:
+    if "WARNING" in alerts:
+        warning += 1
+        warnings.append(alerts)
+    elif "INFO" in alerts:
+        info += 1
+        infos.append(alerts)
+    elif "ERROR" in alerts:
+        error += 1
+        errors.append(alerts)
+
+def print_results():
+    print("~~~Log Summary~~~\n" \
+    f"ERRORS: {error}\n" \
+    f"WARNINGs: {warning}\n" \
+    f"INFO: {info}")
+
+def show_each():
+    print("---ERROR ALERTS---")
+    print()
+    for each in errors:
+        cleaned_alert = each.replace("ERROR: ", "")
+        print(cleaned_alert)
+    print("---WARNING ALERTS---") 
+    print()   
+    for each in warnings:
+        cleaned_alert = each.replace("WARNING: ", "")
+        print(cleaned_alert)
+    print("---INFO ALERTS---")
+    print()
+    for each in infos:
+        cleaned_alert = each.replace("INFO: ", "")
+        print(cleaned_alert)
+
+
+print_results()
+show_each()
+
+log_file.close()
